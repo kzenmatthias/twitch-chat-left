@@ -1,0 +1,42 @@
+/* Twitch Chat Position - Only applied when body has .tcl-chat-left */
+/* Uses transform/translate for visual repositioning so Twitch's JS layout is unaffected */
+
+/* Shift the player right visually, and lock left:0 to prevent
+   Twitch's JS from double-offsetting after layout recalculation */
+body.tcl-chat-left:has(.channel-root__right-column--expanded)
+  .persistent-player {
+  left: 0px !important;
+  translate: 340px !important;
+}
+
+/* Don't move the right-column container — keep it where Twitch expects it.
+   Instead, visually shift the chat panel to the left using transform. */
+
+/* Sidebar expanded: move chat from right edge to x=240 */
+body.tcl-chat-left:has(.side-nav--expanded)
+  .channel-root__right-column.channel-root__right-column--expanded {
+  transform: translateX(calc(240px - 100vw)) translateZ(0px) !important;
+}
+
+/* Sidebar collapsed: move chat from right edge to x=50 */
+body.tcl-chat-left:has(.side-nav--collapsed)
+  .channel-root__right-column.channel-root__right-column--expanded {
+  transform: translateX(calc(50px - 100vw)) translateZ(0px) !important;
+}
+
+/* Chat collapse/expand toggle button: reposition to left side */
+body.tcl-chat-left .toggle-visibility__right-column--expanded {
+  translate: calc(240px - 100vw + 340px) !important;
+}
+
+body.tcl-chat-left:has(.side-nav--collapsed)
+  .toggle-visibility__right-column--expanded {
+  translate: calc(50px - 100vw + 340px) !important;
+}
+
+/* Below-player content: only add padding when chat is expanded */
+body.tcl-chat-left:has(.channel-root__right-column--expanded)
+  .channel-root.channel-root--watch-chat
+  .channel-root__main--with-chat {
+  padding-left: 340px !important;
+}

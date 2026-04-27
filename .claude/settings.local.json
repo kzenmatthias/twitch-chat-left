@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "mcp__chrome-devtools__new_page",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__evaluate_script",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__click",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(npx eslint *)",
+      "Bash(npx prettier *)",
+      "mcp__chrome-devtools__list_pages"
+    ]
+  }
+}
