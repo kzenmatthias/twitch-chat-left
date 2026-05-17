@@ -11,7 +11,8 @@
       "Bash(npm install *)",
       "Bash(npx eslint *)",
       "Bash(npx prettier *)",
-      "mcp__chrome-devtools__list_pages"
+      "mcp__chrome-devtools__list_pages",
+      "Bash(gh repo *)"
     ]
   }
 }
