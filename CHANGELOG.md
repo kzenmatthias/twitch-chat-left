@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0] - 2026-05-17
+
+### Added
+
+- Auto-claim channel points: detects the green claim-bonus button next to chat and clicks it after a random 5–25s delay so it looks human
+- Popup toggle (on by default) to enable/disable auto-claim, persisted via `chrome.storage.sync`
+
 ## [1.2.0] - 2026-05-17
 
 ### Added

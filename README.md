@@ -8,6 +8,7 @@ A Chrome extension that lets you move Twitch chat to the left side of the video 
 - Works with expanded and collapsed sidebar
 - Preference is saved and synced across sessions
 - Handles Twitch SPA navigation between streams
+- **Auto-claim channel points**: when the green claim-bonus button appears, the extension clicks it after a random 5–25 second delay (toggleable from the popup)
 - **Bingo helper** for towdan's custom Bingo: enter your DM'd numbers in a floating panel, and the extension auto-sends `!yoink` when PoguinBot pulls one of them
 
 ## Bingo helper

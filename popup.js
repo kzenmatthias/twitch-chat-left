@@ -1,21 +1,30 @@
 const leftBtn = document.getElementById("left");
 const rightBtn = document.getElementById("right");
+const autoClaim = document.getElementById("auto-claim");
 
-function updateUI(position) {
+function updatePositionUI(position) {
   leftBtn.classList.toggle("active", position === "left");
   rightBtn.classList.toggle("active", position === "right");
 }
 
-chrome.storage.sync.get({ position: "right" }, (result) => {
-  updateUI(result.position);
-});
+chrome.storage.sync.get(
+  { position: "right", autoClaimPoints: true },
+  (result) => {
+    updatePositionUI(result.position);
+    autoClaim.checked = result.autoClaimPoints;
+  },
+);
 
 leftBtn.addEventListener("click", () => {
   chrome.storage.sync.set({ position: "left" });
-  updateUI("left");
+  updatePositionUI("left");
 });
 
 rightBtn.addEventListener("click", () => {
   chrome.storage.sync.set({ position: "right" });
-  updateUI("right");
+  updatePositionUI("right");
+});
+
+autoClaim.addEventListener("change", (e) => {
+  chrome.storage.sync.set({ autoClaimPoints: e.target.checked });
 });
