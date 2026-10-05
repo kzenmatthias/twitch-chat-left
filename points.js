@@ -1,8 +1,8 @@
 // Channel-points auto-claim: when the green "Claim Bonus" button appears
 // next to the chat input, click it after a random delay so it looks human.
 
-// IIFE: content scripts share one global scope per tab, and bingo.js also
-// declares STORAGE_KEY. Isolating this module avoids redeclaration errors.
+// IIFE: content scripts share one global scope per tab. Isolating this
+// module keeps STORAGE_KEY and friends from clashing with other scripts.
 (() => {
 const STORAGE_KEY = "autoClaimPoints";
 const MIN_DELAY_MS = 5000;

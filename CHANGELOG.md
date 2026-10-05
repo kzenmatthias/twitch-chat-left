@@ -6,7 +6,11 @@
 
 - Auto-claim finds the bonus button again when Twitch renders it without a real `<button>` around the chest icon, via `data-test-selector`, or with only a (localised) aria-label; disabled buttons are skipped (#9)
 - Popup: `lang="en"`, a proper heading structure, and `aria-pressed` plus a checkmark on the active chat position instead of colour alone (#1, #3, #4)
-- Accessible names for the chat toggle, the Bingo collapse button (now "Collapse"/"Expand" with `aria-expanded`) and the number chips ("Remove 7") (#2)
+- Accessible name for the chat toggle button in the chat header (#2)
+
+### Removed
+
+- Bingo auto-yoink helper for towdan (panel, `bingo.js` and its styles)
 
 ### Changed
 
