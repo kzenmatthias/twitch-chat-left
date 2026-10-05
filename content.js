@@ -32,6 +32,7 @@ function updateToggleButton() {
   btn.innerHTML = currentPosition === "left" ? ARROW_RIGHT : ARROW_LEFT;
   btn.title =
     currentPosition === "left" ? "Move chat to right" : "Move chat to left";
+  btn.setAttribute("aria-label", btn.title);
 }
 
 function injectToggle(header) {
@@ -46,6 +47,7 @@ function injectToggle(header) {
   btn.innerHTML = currentPosition === "left" ? ARROW_RIGHT : ARROW_LEFT;
   btn.title =
     currentPosition === "left" ? "Move chat to right" : "Move chat to left";
+  btn.setAttribute("aria-label", btn.title);
   btn.addEventListener("click", () => {
     const newPosition = currentPosition === "left" ? "right" : "left";
     chrome.storage.sync.set({ position: newPosition });

@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0] - 2026-10-05
+
+### Fixed
+
+- Auto-claim finds the bonus button again when Twitch renders it without a real `<button>` around the chest icon, via `data-test-selector`, or with only a (localised) aria-label; disabled buttons are skipped (#9)
+- Popup: `lang="en"`, a proper heading structure, and `aria-pressed` plus a checkmark on the active chat position instead of colour alone (#1, #3, #4)
+- Accessible names for the chat toggle, the Bingo collapse button (now "Collapse"/"Expand" with `aria-expanded`) and the number chips ("Remove 7") (#2)
+
+### Changed
+
+- Auto-claim polls every 30 s instead of every 2 s while the tab is hidden, and checks right away when you come back (#5)
+
 ## [1.3.0] - 2026-05-17
 
 ### Added

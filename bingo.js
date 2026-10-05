@@ -203,10 +203,7 @@ function schedulePendingMatch(number) {
     if (!pendingMatch) return;
     const remaining = Math.max(0, pendingMatch.deadline - Date.now());
     const secs = (remaining / 1000).toFixed(1);
-    setStatus(
-      `MATCH ${number}! Click !yoink now — auto in ${secs}s`,
-      "alert",
-    );
+    setStatus(`MATCH ${number}! Click !yoink now — auto in ${secs}s`, "alert");
   };
 
   const timerId = setTimeout(() => {
@@ -328,6 +325,14 @@ function renderPanel() {
 
   panel.classList.toggle("collapsed", !state.panelOpen);
 
+  const collapseToggle = panel.querySelector("#tcl-bingo-toggle");
+  if (collapseToggle) {
+    const label = state.panelOpen ? "Collapse" : "Expand";
+    collapseToggle.title = label;
+    collapseToggle.setAttribute("aria-label", label);
+    collapseToggle.setAttribute("aria-expanded", String(state.panelOpen));
+  }
+
   const enableToggle = panel.querySelector("#tcl-bingo-enable");
   if (enableToggle) enableToggle.checked = state.enabled;
 
@@ -349,6 +354,7 @@ function renderPanel() {
           chip.className = "tcl-bingo-chip";
           chip.textContent = n;
           chip.title = `Remove ${n}`;
+          chip.setAttribute("aria-label", `Remove ${n}`);
           chip.addEventListener("click", () => {
             state.numbers = state.numbers.filter((x) => x !== n);
             saveState();
@@ -431,11 +437,7 @@ function wireDrag(panel) {
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     if (!moved && Math.hypot(dx, dy) > 3) moved = true;
-    const { left, top } = clampPosition(
-      originLeft + dx,
-      originTop + dy,
-      panel,
-    );
+    const { left, top } = clampPosition(originLeft + dx, originTop + dy, panel);
     panel.style.left = `${left}px`;
     panel.style.top = `${top}px`;
   });
@@ -477,7 +479,7 @@ function createPanel() {
   panel.innerHTML = `
     <div class="tcl-bingo-header" title="Drag to move">
       <span class="tcl-bingo-title">Bingo</span>
-      <button type="button" id="tcl-bingo-toggle" title="Collapse">_</button>
+      <button type="button" id="tcl-bingo-toggle" title="Collapse" aria-label="Collapse"><span aria-hidden="true">_</span></button>
     </div>
     <div class="tcl-bingo-body">
       <label class="tcl-bingo-row">
@@ -516,7 +518,7 @@ function createPanel() {
   });
 
   panel.querySelector(".tcl-bingo-header").addEventListener("click", (e) => {
-    if (e.target.id === "tcl-bingo-toggle") return;
+    if (e.target.closest("#tcl-bingo-toggle")) return;
     if (panel.dataset.dragged === "1") {
       // Suppress click that follows a drag
       delete panel.dataset.dragged;

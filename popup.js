@@ -3,8 +3,13 @@ const rightBtn = document.getElementById("right");
 const autoClaim = document.getElementById("auto-claim");
 
 function updatePositionUI(position) {
-  leftBtn.classList.toggle("active", position === "left");
-  rightBtn.classList.toggle("active", position === "right");
+  for (const [btn, value] of [
+    [leftBtn, "left"],
+    [rightBtn, "right"],
+  ]) {
+    btn.classList.toggle("active", position === value);
+    btn.setAttribute("aria-pressed", String(position === value));
+  }
 }
 
 chrome.storage.sync.get(
