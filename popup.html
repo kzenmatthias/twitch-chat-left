@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <style>
       body {
@@ -11,12 +11,20 @@
         background: #18181b;
         margin: 0;
       }
-      h3 {
+      h1 {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+      h2 {
         margin: 0 0 12px;
         font-size: 14px;
         color: #efeff1;
       }
-      h3.sub {
+      h2.sub {
         margin-top: 18px;
       }
       .options {
@@ -41,6 +49,10 @@
         border-color: #9146ff;
         background: #2c2040;
         color: #bf94ff;
+        font-weight: 700;
+      }
+      button.active::before {
+        content: "✓ ";
       }
       .switch {
         display: flex;
@@ -87,18 +99,21 @@
     </style>
   </head>
   <body>
-    <h3>Chat position</h3>
+    <h1>Twitch Chat Position</h1>
+    <h2>Chat position</h2>
     <div class="options">
-      <button id="left">Left</button>
-      <button id="right">Right</button>
+      <button id="left" aria-pressed="false">Left</button>
+      <button id="right" aria-pressed="false">Right</button>
     </div>
 
-    <h3 class="sub">Channel points</h3>
+    <h2 class="sub">Channel points</h2>
     <label class="switch">
       <input type="checkbox" id="auto-claim" />
       <span>Auto-claim bonus</span>
     </label>
-    <div class="hint">Clicks the green claim button after a random 5–25s delay.</div>
+    <div class="hint">
+      Clicks the green claim button after a random 5–25s delay.
+    </div>
 
     <script src="popup.js"></script>
   </body>

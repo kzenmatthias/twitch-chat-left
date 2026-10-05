@@ -9,20 +9,6 @@ A Chrome extension that lets you move Twitch chat to the left side of the video 
 - Preference is saved and synced across sessions
 - Handles Twitch SPA navigation between streams
 - **Auto-claim channel points**: when the green claim-bonus button appears, the extension clicks it after a random 5–25 second delay (toggleable from the popup)
-- **Bingo helper** for towdan's custom Bingo: enter your DM'd numbers in a floating panel, and the extension auto-sends `!yoink` when PoguinBot pulls one of them
-
-## Bingo helper
-
-The Bingo panel only appears on `twitch.tv/towdan` (it activates and tears down as you navigate between channels).
-
-1. Open the floating "Bingo" panel (top-left of the page).
-2. Enter the numbers from your DM (comma or space separated) and click **Add**.
-3. Tick **Auto-yoink on match** to arm the helper.
-4. When PoguinBot posts "Bingo Pull … It's number N" and N is on your card, the extension types `!yoink` into chat and sends it.
-
-To target a different channel, change `TARGET_CHANNEL` at the top of `bingo.js`.
-
-There's also a manual **!yoink now** button and a **Clear** button. Click any number chip to remove it.
 
 ## Installation
 

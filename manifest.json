@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Twitch Chat Position",
-  "description": "Toggle Twitch chat between left and right side, auto-claim channel points, plus a Bingo auto-yoink helper",
-  "version": "1.3.0",
+  "description": "Toggle Twitch chat between left and right side and auto-claim channel points",
+  "version": "1.4.0",
   "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
@@ -15,7 +15,7 @@
   "content_scripts": [
     {
       "matches": ["https://www.twitch.tv/*"],
-      "js": ["content.js", "bingo.js", "points.js"],
+      "js": ["content.js", "points.js"],
       "run_at": "document_start"
     }
   ],
